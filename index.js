@@ -5,7 +5,17 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 
-require(__dirname + '/src/sitio.js')(app, express)
+var Publishable_Key = 'pk_test_51KK9HRCVF9STrE9fpdnzMFg0uEEdsEWy2CmUX9ssSfjALMZBm9bkj6Z7TL6mHV8QR3Nb8QS5Tm8D7UcGyNhvnWnb007OdBsABL'
+var Secret_Key = process.env['Secret']
+  
+const stripe = require('stripe')(Secret_Key)
+
+const mongoose = require('mongoose')
+
+require(__dirname + '/src/database.js')
+require(__dirname + '/src/sitio.js')(app, express, stripe)
+require(__dirname + '/src/bot.js')(express, app)
+
 
 io.on('connection', (socket) =>{
   console.log('un usuario se unio al servidor')
@@ -29,6 +39,7 @@ io.on('connection', (socket) =>{
     console.log('Message ' + author + ': ' + message)
   })
 })
+
 
 server.listen(3000, () => {
   console.log('server started');

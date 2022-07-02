@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>Problema arreglado</title>
+  </head>
+  <body>
+    Problema arreglado!
+    la pagina se redirigirá en 5 segundos.
+    <script>
+      localStorage.removeItem('outfit')
+      localStorage.removeItem('outfitSave')
+
+      setTimeout(() =>{
+        location.href = '/login'
+      }, 5000)
+    </script>
+  </body>
+</html>

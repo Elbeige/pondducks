@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Camiseta de testeador",
+    "costo": false,
+    "socio": false,
+    "id": "i1",
+    "fecha": "19/04/2022",
+    "sticker": false,
+    "imgDuck": "https://media.discordapp.net/attachments/966014531199463505/966014551894138910/unknown.png",
+    "imgCard": null,
+    "imgItem": null
+  }
+]

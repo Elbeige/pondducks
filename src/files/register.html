@@ -1,0 +1,74 @@
+<html>
+  <head>
+   <title>Register | Pond Ducks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilos.css"/>
+    <style>
+      body{
+        background: none;
+        display:flex;
+        justify-content:center;
+        align-items: center;
+      }
+
+      .welcome{
+        display:flex;
+        justify-content:center;
+        font-size:23px;
+        font-wegith: bold;
+      }
+
+      .parteCon{
+        display:flex;
+        justify-content: center;
+        padding: 5px;
+      }
+
+      .parte{
+        width:50%;
+      }
+
+      .text{
+        width:250px;
+        height:40px;
+        outline-color: #6ecbd5;
+        border-radius:5px;
+        border: solid 2px #e5e5e5;
+      }
+      
+    </style>
+  </head>
+  <body>
+ <div style="background:#56d7c4;width:900px;height: auto;padding:10px;display:flex;justify-content:center;align-items:center;border-radius:5px;">
+   <form style="width:100%;height:400px;background:white;border-radius:5px;padding:5px;margin: 10 auto;" action="/register/finish" method="post">
+    <div class="welcome">
+      Rellena todo lo necesario en el formulario.
+    </div><br>
+    <div class="parteCon">
+     <div class="parte">
+       <div style="width:250px;height:auto;border:solid 2px #6ecbd5;background:#56d7c4;border-radius:5px;">
+         Pond Ducks es un Video Juego dirigido a publico infantil desde los 5 años, no se permite nombres o contraseñas inapropiadas o usted sera prohibido. Tenemos una comunidad segura donde no toleramos Acoso, Abuso, etc.
+       </div><br>
+       Escribe el nombre de tu pato
+       <input type="text" class="text" placeholder="Escribe el nombre de tu pato" name="duck_name" required><br>
+       <li>¡Recuerda no ingresar tu nombre real!</li>
+     </div>
+     <div class="parte">
+       Escribe el correo electronico de tus padres
+       <input type="email" class="text" placeholder="Escribe el correo" name="duck_email" required><br>
+<br>
+       Escribe la contraseña para tu pato:
+       <input type="password" class="text" placeholder="Contraseña" name="duck_password" required><BR>
+       <li>Recuerda no revelar tu contraseña a nadie</li><br>
+       Vuelva a escribir la contraseña:
+       <input type="password" class="text" placeholder="Repita su contraseña"><br>
+       <div style="display:flex;justify-content:flex-end;">
+         <button class="button">¡Listo!</button>
+       </div>
+     </div>
+    </div>
+   </form>
+ </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>

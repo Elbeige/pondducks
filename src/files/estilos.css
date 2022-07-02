@@ -1,6 +1,10 @@
+body{
+  background:url('https://media.discordapp.net/attachments/961066933669728257/966151422058037268/unknown.png?width=648&height=492');
+  background-size:cover;
+	background-repeat:no-repeat;
+}
 *{
   transition:all 0.3s ease-in-out;
-  font-family: 'Fredoka One', cursive;
 }
 a{
   color:#35c7f8;
@@ -26,9 +30,6 @@ a{
   height:600px;
 }
 
-#game{
-  border:solid 1px black;
-}
 
 .overlay{
   position:absolute;
@@ -98,6 +99,40 @@ a{
   justify-content:center;
 }
 
+.global-button{
+  padding:5px 15px;
+  color:white;
+  background:#5797ff;
+  border-radius:5px;
+  border:none;
+  margin:5px;
+}
+
+.shop-global-title{
+  font-weight:900;
+  display:flex;
+  justify-content:center;
+}
+
+.global-shop{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:rgba(0,0,0,.3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  visibility:hidden;
+  opacity:0;
+}
+
+.global-shop.active{
+  visibility:visible;
+  opacity:1;
+}
+
   .color{
     border-radius:5px;
     background:none;
@@ -151,6 +186,98 @@ a{
 .androidGame{
   width:900;
   height:450;
+}
+
+.cont-welcome{
+  border-radius:5px;
+  width:500px;
+  height:auto;
+  padding:10px;
+  background:#0080ff55;
+  color:white;
+  margin:20px auto;
+}
+
+.cont-welcome .cont-title{
+  width:100%;
+  font-weight:900;
+  display:flex;
+  justify-content:center;
+}
+
+
+.cont-text .cont-rules{
+  width:100%;
+  height:200px;
+  overflow-y:scroll;
+  margin:10px 0px;
+}
+
+.overlay-playercard{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:rgba(0,0,0,.3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  visibility:hidden;
+  opacity:0;
+}
+
+.overlay.active{
+  visibility:visible;
+  opacity:1;
+}
+
+.player-global{
+  border-radius:5px;
+  background:#2bc4ff;
+  height:80%;
+  width:65%;
+}
+
+.player-global .playercard{
+  width:50%;
+  height:70%;
+  margin:0;
+}
+
+.player-global .coins{
+  width:50%;
+  font-size:20px;
+  font-weight:900;
+  color:white;
+}
+
+.items{
+  width:50%;
+  height:90%;
+  margin:0;
+  overflow-y:scroll;
+}
+
+.item{
+  width:100px;
+  height:100px;
+  float:left;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: white;
+  margin:1px;
+}
+
+#shop{
+  overflow-y:scroll;
+  height:300px;
+}
+
+.yhd{
+  visibility:visible;
+  opacity:1;
 }
 
 @media screen and (min-width: 200px) and (max-width: 900px){

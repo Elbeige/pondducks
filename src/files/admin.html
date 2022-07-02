@@ -1,9 +1,11 @@
 <html>
   <head>
     <title>Jugar | Pond Ducks</title>
-      <link rel="icon" href="https://media.discordapp.net/attachments/961066933669728257/962880834577252352/unknown.png"> 
+      <link rel="icon" href="https://media.discordapp.net/attachments/961066933669728257/967485276639354890/Duck_Icon.png">
+    <meta property="og:site_name" content="Cristian Games">
+  <meta property="og:image" content="https://media.discordapp.net/attachments/961066933669728257/967485276639354890/Duck_Icon.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link rel="stylesheet" href="admin.css"/>
+<link rel="stylesheet" href="estilos.css"/>
   <meta name="copyright" content="©cristiangames">
   <meta name="description" content="Juega Pond Ducks. Juego totalmente familiar. Diviertete vistiendo a tu pato, explorando y jugando minijuegos. (En construcción)">
   <meta name="title" content="Inicio | Experimental Ducks">
@@ -19,8 +21,41 @@
   <meta name="msapplication-TileColor" content="#016EFB">
   <meta name="msapplication-TileImage" content="logo.ico">
   <meta name="theme-color" content="#016EFB">
+     <style>
+      .loading{
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        background:white;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+      }
+
+       .modal-body div img{
+         cursor: pointer;
+       }
+    </style>
   </head>
   <body>
+    <div class="loading">
+     <div class="spinner-border text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+     </div><strong style="margin:10px;">Cargando Juego...</strong>
+    </div>
+    <div class="overlay-playercard" id="playercard">
+      <div class="player-global">
+        <div class="playercard" id="playerCard" style="float:left;">En construcción! <a href="#game" onclick="cerrarPlayercard()">Cerrar</a></div>
+        
+        <div class="items">
+
+          
+          
+        </div><div class="coins" id="id">Coins: 0</div>
+      </div>
+    </div>
     <div class="global" id="global">
       <div class="global-cont">
         <div class="global-title">
@@ -34,16 +69,27 @@
         </div>
       </div>
     </div>
+    <div class="global-shop" id="global-shop">
+      <div class="global-cont">
+        <div class="shop-global-title">
+          Opppss... Error de Conexión
+        </div>
+        <div class="global-button-cont">
+        <button class="global-button" onclick="acceptShopGlobal()">Sí</button>
+        <button class="global-button" onclick="shopCloseGlobal()">No</button>
+        </div>
+      </div>
+    </div>
     <div class="overlay" id="apodoOver">
       <div class="popup">
         <center>
         <div class="titulo">
-    <span>¡Bienvenido a Duck Chat 2!</span>
+    <span>¡Bienvenido a Pond Ducks!</span>
           <img src="https://media.discordapp.net/attachments/956952560063893526/963479380133281882/fpr.PNG?width=541&height=406" alt="Duck Chat 2" width="80px">
         </div>
           Ingresa tu apodo favorito, este apodo se te guardara hasta Pond Ducks.<br>
         <div class="form-floating mb-3">
-  <input type="text" class="form-control apodo" id="floatingInput" placeholder="ducksi23">
+  <input type="text" class="form-control apodo" id="floatingInput" placeholder="ducksi23" max-length="10">
   <label for="floatingInput">Apodo para tu Pato</label>
 </div><input type="color" class="color" style="visibility:hidden;">
           <br>
@@ -54,14 +100,54 @@
         </center>
       </div>
     </div>
-    <br>
     <center>
+      <div style="height:auto;">
     <canvas id="game"width="1000" height="550">
       ¡BRR. 404! Lo sentimos, pero no podrás jugar, probablemente esto se deba a tu navegador o dispositivo, si tienes alguna duda sobre esto, comunícate con un soporte mediante el servidor de discord.
-    </canvas>
-  
-    <br>
-    <input type="text" placeholder="¡Bienvenido a Experimental Ducks!" disabled><button>Enviar</button><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Abrir Chat</button>
+    </canvas><br>
+        <div style="background:#3493f9; width:100%;height:50px;">
+        <input type="text" placeholder="¡Bienvenido a Pond Ducks!" class="inputMessage" maxlength="50" disabled><button class="button">Enviar</button><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Abrir Chat</button><img src="https://media.discordapp.net/attachments/961066933669728257/975776329779806218/unknown.png" onclick="abrirPlayercard()" class="game-boton" width="4%" height="100%">
+          <div>
+  </div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Duck Style <span class="badge bg-secondary">Nuevo</span></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="shop">
+        
+        <hr>
+        <strong>Articulos de eventos (Hasta el 30 de Mayo)</strong>
+       <div class="shopItem" onclick="comprar('https://media.discordapp.net/attachments/961066933669728257/975844046369091624/2.png', 'i2', 'body')"><img src="https://media.discordapp.net/attachments/961066933669728257/975852818588123216/unknown.png" width="50px"><br>Camiseta de WI-FI (gratis)</div>
+        <hr>
+       <strong>Articulos normales (Hasta el 1 de Junio)</strong> 
+        <div class="shopItem" onclick="comprar('https://media.discordapp.net/attachments/961066933669728257/975921388839927828/3.png', 'i3', 'body')"><img src="https://media.discordapp.net/attachments/961066933669728257/975921388839927828/3.png" width="50px"><br>Camiseta de Estrella(gratis)</div>
+        <div class="shopItem" onclick="comprar('https://media.discordapp.net/attachments/961066933669728257/976270774174376006/4.png', 'i4', 'neck')"><img src="https://media.discordapp.net/attachments/961066933669728257/976270774174376006/4.png" width="50px"><br>Bufanda Verde(gratis)</div>
+            <div class="shopItem" onclick="comprar('https://media.discordapp.net/attachments/956952560063893526/978081216735612978/unknown.png', 'i5', 'face')"><img src="https://media.discordapp.net/attachments/956952560063893526/978081216735612978/unknown.png" width="50px"><br>Gafas Negras Cool(gratis)</div>
+        <hr>
+        
+      </div>
+      
+      </div>
+    </div>
+</div>
+  <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Formulario de Compra</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" >
+      <div class="shopItem" onclick="comprar('https://media.discordapp.net/attachments/961066933669728257/978420945846947850/unknown.png', 'i6', 'rupple')"><img src="https://media.discordapp.net/attachments/961066933669728257/978420945846947850/unknown.png" width="50px"><br>Rupple Azul(Gratis)</div>
+        <div class="shopItem" onclick="comprar('https://media.discordapp.net/attachments/961066933669728257/978420921016660010/unknown.png', 'i7', 'rupple')"><img src="https://media.discordapp.net/attachments/961066933669728257/978420921016660010/unknown.png" width="50px"><br>Rupple Blanco(Gratis)</div>
+      </div>
+      </div>
+    </div>
+  </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -70,17 +156,70 @@
         <h5 class="modal-title" id="exampleModalLabel">Chat - Duck Chat 2</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body" style="overflow-y:scroll;height:300px;">
+      <div class="modal-body chat" style="overflow-y:scroll;height:300px;">
         <div class="messages">Elbeige y Mayo: ¡Bienvenidos a Duck Chat 2!</div>
       </div>
       <div class="modal-footer">
-        <input type="text" placeholder="¡Hola!" class="message" max-length="30">
-        <button type="button" class="btn btn-primary" onclick="sendMessage()">Enviar</button>
+        <input type="text" class="message" id="message">
+        <button type="button" class="btn btn-primary" onclick="sendMessage()" >Enviar</button>
+        </div>
       </div>
     </div>
   </div>
-</div></center>
-      <script src="/socket.io/socket.io.js"></script>   
+</div>
+<img src="https://media.discordapp.net/attachments/961066933669728257/983875058307043378/unknown.png" width="70px" style="position:absolute;top:10;right:25;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Duck Fair | Misiones</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="https://media.discordapp.net/attachments/961066933669728257/979828476917985300/Pera.png" alt="pera" onclick="redirect('/game01')" width="60px" style="cursor: pointer;">
+        <br>
+        ¡Vuelve en 2 horas y desbloquea nuevos mini-juegos!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</center>
+<div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Mapa - Pond Ducks</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <div style="width:100%;height:300px;background:#63d3fd;">
+         <img src="https://media.discordapp.net/attachments/961066933669728257/986035251950280735/unknown.png?width=734&height=492" alt="Bosque" width="100px" onclick="selectWorld = 6; generatePlayers()" data-bs-dismiss="modal" title="Bosque nubloso">
+         <img src="https://media.discordapp.net/attachments/961066933669728257/986034775670276246/unknown.png?width=688&height=492" alt="Bienvenida" width="100px" onclick="selectWorld = 4; generatePlayers()" data-bs-dismiss="modal" title="Sala de Bienvenida">
+         <img src="https://media.discordapp.net/attachments/961066933669728257/986035220534952006/unknown.png?width=731&height=492" alt="Plaza" width="100px" onclick="selectWorld = 3; generatePlayers()" data-bs-dismiss="modal" title="Plaza">
+         <img src="https://media.discordapp.net/attachments/961066933669728257/986035341385404466/unknown.png?width=697&height=492" alt="Sala fiesta" width="110px" onclick="selectWorld = 2; generatePlayers()" data-bs-dismiss="modal" title="Sala Fiesta">
+         <img src="https://media.discordapp.net/attachments/961066933669728257/986035374331678720/unknown.png?width=535&height=492" alt="Muelle" width="100px" onclick="selectWorld = 1; generatePlayers()" data-bs-dismiss="modal" title="Muelle Patístico">
+       </div>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="mover" style="top:150;left:0;" onclick="moveMovil(37)"> <i class="fas fa-arrow-left"></i> </div>
+  <div class="mover" style="top:150;left:100;" onclick="moveMovil(39)"> <i class="fas fa-arrow-right"></i> </div>
+  <div class="mover" style="top:100;left:50;" onclick="moveMovil(38)"> <i class="fas fa-arrow-up" ></i></div>
+  <div class="mover" style="top:200;left:50;" onclick="moveMovil(40)"> <i class="fas fa-arrow-down"></i> </div>
+    <img src="https://media.discordapp.net/attachments/961066933669728257/977695241538793513/unknown.png" width="70px" style="position:absolute;bottom:65;right:25;visibility:hidden;" class="catalogo" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <img src="https://media.discordapp.net/attachments/961066933669728257/979821214929391647/Libro_alto2.png" width="70px" style="position:absolute;bottom:65;right:25;visibility:hidden;" class="catalogoRupple" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+     <img src="https://media.discordapp.net/attachments/961066933669728257/979828476917985300/Pera.png" width="70px" style="position:absolute;bottom:65;right:25;visibility:hidden;" class="jugarPera" type="button" class="btn btn-primary" onclick="redirect('/game01')">
+        <img src="https://media.discordapp.net/attachments/961066933669728257/986027006447718440/unknown.png?width=387&height=455" width="50px" style="position:absolute;bottom:65;left:25;" type="button" class="map"data-bs-toggle="modal" data-bs-target="#exampleModal5">  
+    <script src="/socket.io/socket.io.js"></script>   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
       var music1 = new Audio('https://cdn.discordapp.com/attachments/963154950739853414/963199779737858058/Ardilla_08_04_2022_15_49.mp3')
@@ -89,9 +228,16 @@
   music1.loop = true
   music1.volume = 0.2
 }  
+  
     </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="item.js"></script>
     <script src="chat.js"></script>
     <script src="global.js"></script>
+    <script src="text.js"></script>
+    <script src="config.js"></script>
+    <script src="https://itemsPD.cristiangames.repl.co/items.js"></script>
     <script src="admin.js"></script>
+    <script src="boxModal.js"></script>
   </body>
 </html>

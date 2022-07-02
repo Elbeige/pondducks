@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>Iniciar Sesion | Pond Ducks</title>
+    <link rel="stylesheet" href="estilos.css"/>
+    <style>
+      body{
+        background: url('https://media.discordapp.net/attachments/961066933669728257/992603804690288740/unknown.png?width=626&height=469');
+        background-repeat:no-repeat;
+        background-size:cover;
+      }
+      
+      label{
+        color:white;
+        font-weight:bold;
+        font-family:calibri;
+      }
+      form{
+        margin:0;
+      }
+
+      input{
+        border-radius:5px;
+        border:0.5px solid #efefef;
+        padding:10px;
+        outline-color:#56d7c4;
+      }
+    </style>
+  </head>
+  <body>
+  <form style="width:100%;height:100%;" action="/login/finish2" method="post">
+    <center>
+    <br>
+    <br>
+    <img src="logo.png" alt="No se pudo cargar la imagen." width="400px"><br>
+    <label for="duck_username" class="form-label">Nombre de Usuario</label><br>
+    <input type="text" class="form-control" id="duck_username" aria-describedby="usernameHelp" name="duck_username" required><br>
+
+    <label for="duck_pass" class="form-label">Contraseña</label><br>
+    <input type="password" class="form-control" id="duck_pass" name="duck_pass" required>
+
+     <center>
+  <button class="button" class="btn btn-primary">Ingresar</button>
+     </center>
+</form>
+  </body>
+</html>

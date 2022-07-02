@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codes </title>
+  <style>
+    body{
+  background:url('https://media.discordapp.net/attachments/961066933669728257/966151422058037268/unknown.png?width=648&height=492');
+  background-size:cover;
+	background-repeat:no-repeat;
+}
+*{
+  transition:all 0.3s ease-in-out;
+}
+a{
+  color:#35c7f8;
+  text-decoration:none;
+}
+.button{
+  background:url('https://media.discordapp.net/attachments/961066933669728257/965046906503979088/unknown.png');
+  border:solid 2px #1370aa;
+  border-radius:6px;
+  padding:5px 10px;
+  margin:5px;
+  color:white;
+  font-family: 'Yellowtail', cursive;
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+.button:hover{
+  transform:scale(1.1);
+}
+
+.codigos{
+  border-radius: 5px;
+  border:solid 2px #dbdbdb;
+  padding:10px;
+  outline-color: #69f1a6;
+}
+
+.next{
+  padding:10px;
+  background:#69f1a6;
+  border:solid 2px #5cdb95;
+  border-radius:5px;
+  color: white;
+}
+
+.ing{
+  width:100%;
+  height:600px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+    
+  </style>
+</head>
+<body>
+  <center>
+    <h2 style="color:white;font-family:calibri;">Pond Ducks Codes</h2>
+  </center>
+    <input type="text" max-length="10" min-length="1" class="codigos" placeholder="Ingrese el código aquí" required><button class="next" onclick="verificCode()">¡Listo!</button>
+  <script>
+    var codigos = document.querySelector('.codigos')
+    var codes = [
+      {
+        "code": "TIMETIME",
+        "monedas": 5000
+      },
+      {
+        "code": "PDCODES",
+        "monedas": 5000,
+        "items": [
+          {
+            "id": "i5"
+          }
+        ]
+      },
+      {
+        "code": "BOOSTER",
+        "monedas": 5000,
+        "items": [
+          {
+            "id": "i8"
+          }
+        ]
+      }
+    ]
+
+    function verificCode() {
+      var verificado = false
+      for (let i = 0; i < codes.length; i++) {
+        if(codigos.value == codes[i].code){
+          console.log('SI!!!!')
+          verificado = true
+        }else if(i == codes.length-1 && !verificado){
+          console.log('No existe')
+        }
+      }
+    }
+  </script>
+</body>
+</html>
